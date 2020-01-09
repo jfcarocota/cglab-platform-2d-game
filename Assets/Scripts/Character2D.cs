@@ -21,6 +21,11 @@ public class Character2D : MonoBehaviour
         spr.flipX = Flip; 
     }
 
+    void LateUpdate()
+    {
+        anim.SetFloat("moveX", Mathf.Abs(Axis.x));
+    }
+
     Vector2 Axis
     {
         get => new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
