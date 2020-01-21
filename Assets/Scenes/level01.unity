@@ -131,9 +131,9 @@ GameObject:
   - component: {fileID: 495967864}
   - component: {fileID: 495967863}
   - component: {fileID: 495967865}
-  - component: {fileID: 495967866}
   - component: {fileID: 495967867}
   - component: {fileID: 495967868}
+  - component: {fileID: 495967866}
   m_Layer: 0
   m_Name: Charcater2D
   m_TagString: Untagged
@@ -233,15 +233,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 495967862}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 926e0c6aa4f5fb043b0c931360bc7883, type: 3}
+  m_Script: {fileID: 11500000, guid: 8bb9ddca18f77a148b25322fb1163e12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2.5
-  rayColor: {r: 1, g: 0, b: 0.74655247, a: 1}
-  rayDistance: 1.41
+  moveSpeed: 3
+  rayColor: {r: 1, g: 0, b: 0.2854514, a: 1}
+  rayDistance: 1.37
   groundLayer:
     serializedVersion: 2
     m_Bits: 512
+  jumpForce: 7
 --- !u!50 &495967867
 Rigidbody2D:
   serializedVersion: 4
