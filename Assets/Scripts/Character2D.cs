@@ -8,6 +8,7 @@ public class Character2D : MonoBehaviour
     protected Animator anim;
     protected SpriteRenderer spr;
     protected Rigidbody2D rb2D;
+
     [SerializeField, Range(0.1f, 20f)]
     protected float moveSpeed = 2f;
 
@@ -19,6 +20,8 @@ public class Character2D : MonoBehaviour
     LayerMask groundLayer;
     [SerializeField, Range(0.1f, 20f)]
     protected float jumpForce = 7f;
+    [SerializeField, Range(0.1f, 10f)]
+    protected float maxVelX = 1f;
 
     void Awake() 
     {

@@ -243,6 +243,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   jumpForce: 7
+  maxVelX: 5
 --- !u!50 &495967867
 Rigidbody2D:
   serializedVersion: 4

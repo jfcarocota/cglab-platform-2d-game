@@ -9,7 +9,9 @@ public class Player : Character2D
     
     void Update() 
     {
-        GameplaySystem.MovementTdelta(transform, moveSpeed); 
+        //GameplaySystem.MovementTdelta(transform, moveSpeed); 
+        //GameplaySystem.PhysicsMovement(rb2D, moveSpeed, maxVelX);
+        GameplaySystem.PhysicsMovementVel(rb2D, moveSpeed, maxVelX);
         spr.flipX = Flip; 
     }
 
