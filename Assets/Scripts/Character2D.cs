@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using Platform2DUtils.GameplaySystem;
 
+[RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(SpriteRenderer))]
+[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(CapsuleCollider2D))]
+
 public class Character2D : MonoBehaviour
 {
     protected Animator anim;
@@ -44,5 +49,16 @@ public class Character2D : MonoBehaviour
     {
        Gizmos.color = rayColor;
        Gizmos.DrawRay(transform.position, Vector2.down * rayDistance);
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.CompareTag("collectable"))   
+        {
+            Collectable collectable = other.GetComponent<Collectable>();
+            //Debug.Log(collectable.Points);
+            Gamemanager.instance.Score.AddPoints(collectable.Points);
+            Destroy(other.gameObject);
+        } 
     }
 }
