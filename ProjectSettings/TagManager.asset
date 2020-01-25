@@ -42,3 +42,21 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Ground
+    uniqueID: 2001865521
+    locked: 0
+  - name: Trees
+    uniqueID: 3334040205
+    locked: 0
+  - name: Rocks
+    uniqueID: 2724874583
+    locked: 0
+  - name: Collectable
+    uniqueID: 9369765
+    locked: 0
+  - name: Player
+    uniqueID: 2519294305
+    locked: 0
+  - name: Grass
+    uniqueID: 242221297
+    locked: 0
