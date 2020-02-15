@@ -60,3 +60,6 @@ TagManager:
   - name: Grass
     uniqueID: 242221297
     locked: 0
+  - name: Enemy
+    uniqueID: 1603396377
+    locked: 0
