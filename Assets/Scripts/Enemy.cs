@@ -6,11 +6,7 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField]
     float moveSpeed;
-    [SerializeField]
-    float timeLimit;
-    float timer = 0;
-    float timerDelay = 0;
-    [SerializeField]
+
     float delay;
     [SerializeField]
     Vector2 dir = Vector2.right;
@@ -19,45 +15,71 @@ public class Enemy : MonoBehaviour
 
     Animator anim;
 
+    IEnumerator moving;
+    IEnumerator waiting;
+
+    bool isMoving = true;
+
+    [SerializeField]
+    float movingTime;
+    [SerializeField]
+    float waitingTime;
+
+
+
     void Awake() 
     {
         spr = GetComponent<SpriteRenderer>();   
         anim = GetComponent<Animator>(); 
     }
 
-    void Update()
+    void Start() 
     {
-        /*transform.Translate(dir * moveSpeed * Time.deltaTime);
-        timer += Time.deltaTime;
-        if(timer >= timeLimit)
-        {
-            timer = 0;
-            spr.flipX = FlipSprite;
-            dir.x = dir.x > 0 ? -1 : 1;
-        }*/
+        moving = Moving(movingTime);
+        waiting = Waiting(waitingTime);
+        StartCoroutine(moving);
+        StartCoroutine(waiting);
+    }
 
-        if(timer < timeLimit)
+    IEnumerator Waiting(float waitTime)
+    {
+        while(true)
         {
-            transform.Translate(dir * moveSpeed * Time.deltaTime);
-            timer += Time.deltaTime;
-        }
-        else
-        {
-            if(timerDelay == 0)
+            yield return new WaitForSeconds(waitTime);
+
+            if(isMoving)
             {
+                StopCoroutine(moving);
                 anim.SetTrigger("idle");
             }
-            timerDelay += Time.deltaTime;
-            if(timerDelay >= delay)
+            else
             {
                 spr.flipX = FlipSprite;
                 dir.x = dir.x > 0 ? -1 : 1;
-                timer = 0;
-                timerDelay = 0;
                 anim.SetTrigger("patrol");
+                StartMoving();
             }
+            isMoving = !isMoving;
         }
     }
+
+     void StartMoving()
+     {
+         moving = Moving(movingTime);
+        StartCoroutine(moving);
+     }
+
+
+    IEnumerator Moving(float waitTime)
+    {
+        while(true)
+        {
+            transform.Translate(dir * moveSpeed * Time.deltaTime);
+            yield return new WaitForSeconds(waitTime);
+        }
+    }
+
+
 
     bool FlipSprite
     {
